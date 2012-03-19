@@ -8,7 +8,6 @@ $(document).ready(function() {
 
 
 function gen_table(t_rows, t_colls, random_generation){
-
 	var life = new Array();
 
 	if(random_generation){
@@ -28,6 +27,7 @@ function gen_table(t_rows, t_colls, random_generation){
 	for(i = 0; i < t_rows; i++){
 		var tr = document.createElement('tr');
 		tr.setAttribute('id','row_'+i);
+
 		for(j = 0; j < t_colls; j++){
 			var td = document.createElement('td');
 			td.setAttribute('row',i);
@@ -36,7 +36,6 @@ function gen_table(t_rows, t_colls, random_generation){
 			if(life[i][j] == 1){
 				td.setAttribute('class','alive');
 			}else{td.setAttribute('class','dead');};
-
 			tr.appendChild(td);
 		}
 		table.appendChild(tr);
