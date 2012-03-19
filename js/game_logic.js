@@ -1,29 +1,26 @@
 $(document).ready(function() {
-	t_width = 10;
-	t_height = 10;
+	t_colls = 10;
+	t_rows = 10;
 
-	gen_row(t_height);
+	gen_rows(t_rows, t_colls);
 });
 
-t_width = 10;
-t_height = 10;
+function gen_rows(t_rows, t_colls){
+	wrapper = document.getElementById('table_wrap');
+	table = document.createElement("table");
+	wrapper.appendChild(table);
 
-function gen_row(t_height){
+	row=null;
+	for(i = 0; i < t_rows; i++){
+		var tr = document.createElement('tr');
+		tr.setAttribute('id','row_'+i);
+		for(j = 0; j < t_colls; j++){
+			var td = document.createElement('td');
+			td.setAttribute('id','cell_'+i+'_'+j);
+			tr.appendChild(td);
+		};
+		table.appendChild(tr);
+	};
 
-	document.write("<table class='life_field'>");
-	
-	for(i = 0; i < t_height; i++){
-		document.write("<tr id='row_"+i+"'>");
-		gen_cell(t_width, i);
-		document.write("</tr>");
-	}
-	document.write("</table>");
-}
+};
 
-function gen_cell(t_width, i){
-	for(j = 0; j < t_width; j++){
-		document.write("<td  id='cell_"+i+"_"+j+"'></td>");
-	}
-}
-document.write(t_width);
-document.write(t_height);
