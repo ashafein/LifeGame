@@ -26,13 +26,28 @@
 		$( "#amount_rows" ).val($( "#slider_rows" ).slider( "value" ) );
 	});
 
+
+	$(function() {
+		$( "#slider_timing" ).slider({
+			value:800,
+			min: 300,
+			max: 5000,
+			step: 200,
+			slide: function( event, ui ) {
+				$( "#amount_timing" ).val( ui.value );
+			}
+		});
+		$( "#amount_timing" ).val($( "#slider_timing" ).slider( "value" ));
+
+	});
+
 		new_gen();
 	});
 
 	var t_colls = 10;
 	var t_rows = 10;
 	var random_generation = false;
-	var circle_lives = 3000;
+	var circle_lives = 900;
 	var alive = true;
 	var timer;
 	var run = 0;
@@ -42,12 +57,13 @@
 
 
 	function start_cycle(run) {
+		circle_lives = $( "#slider_timing" ).val();
 		if(alive == 0){
 			 run = 0;
 		}
 		if(run != 0) {
 		if(timer) clearTimeout(timer);
-			timer = setTimeout(function(){one_circle(); start_cycle(run);}, 900);
+			timer = setTimeout(function(){one_circle(); start_cycle(run);}, circle_lives);
 		} else {
 			run = 1;
 			alive = true;

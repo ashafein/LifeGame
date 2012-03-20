@@ -31,6 +31,6 @@ float: left;
 }
 
 
-#slider_columns, #slider_rows{
+#slider_columns, #slider_rows, #slider_timing{
 	width: 200px;
 }
