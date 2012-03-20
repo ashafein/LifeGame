@@ -1,52 +1,95 @@
 	$(document).ready(function() {
-		gen_table(t_rows, t_colls, random_generation);
-
+		new_gen();
 	});
-
 
 
 	var t_colls = 10;
 	var t_rows = 10;
 	var random_generation = true;
 	var life = new Array();
+	var neighbours = new Array();
+
 
 	function start_cycle() {
-		for(i = 0; i < t_rows; i++){
-			for(j = 0; j < t_colls; j++){
+		//to do: timer
+		one_circle();
+	};
+
+
+	function new_gen(flag) {
+		if(table = document.getElementById('life_field')){
+			table.parentNode.removeChild(table);
+		}
+		if(flag != 0){
+		init_life(t_rows, t_colls);
+		get_random_gen(random_generation);
+		}
+		gen_table(t_rows, t_colls);
+	};
+
+
+	function count_neighbours() {
+		for(i = 0; i < t_rows; i++) {
+			for(j = 0; j < t_colls; j++) {
 				count= 0;
-				//cell = document.getElementById(); !!!!!!!!!!!!!!!!!!!!!!!!
-				count++;
-				
+				if(life[i][j] == 1) {
+					if((life[i+1] != undefined) && (life[i+1][j-1] != undefined)) {
+						count += life[i+1][j-1];
+					};
+					if(life[i+1] != undefined) {
+						count += life[i+1][j];
+					};
+					if((life[i+1] != undefined) && (life[i+1][j+1] != undefined)) {
+						count += life[i+1][j+1];
+					};
+					if(life[i][j-1] != undefined) {
+						count += life[i][j-1];
+					};
+					if(life[i][j+1] != undefined) {
+						count += life[i][j+1];
+					};
+					if((life[i-1] != undefined) && (life[i-1][j-1] != undefined)) {
+						count += life[i-1][j-1];
+					};
+					if(life[i-1] != undefined) {
+						count += life[i-1][j];
+					};
+					if((life[i-1] != undefined) && (life[i-1][j+1] != undefined)) {
+						count += life[i-1][j+1];
+					}
+				} else { 
+					 count = 10;
+					 }
+				neighbours[i][j] = count;
 			}
 		}
-	};
+	}
 
+	function one_circle() {
+		count_neighbours()
+		for(i = 0; i < t_rows; i++) {
+			for(j = 0; j < t_colls; j++) {
+				if((neighbours[i][j] > 3) || (neighbours[i][j] < 2)) {
+					life[i][j] = 0;
+				}
+			}
+		}
+		new_gen(0);
+	}
 
-
-
-
-	function new_gen() {
-		table = document.getElementById('life_field');
-		table.parentNode.removeChild(table);
-		gen_table(t_rows, t_colls, random_generation);
-	};
-
-
-	function gen_table(t_rows, t_colls, random_generation) {
-		get_random_gen(random_generation);
+	function gen_table(t_rows, t_colls){
 		wrapper = document.getElementById('table_wrap');
 		table = document.createElement('table');
 		table.setAttribute('id','life_field');
 		wrapper.appendChild(table);
-
 		for(i = 0; i < t_rows; i++) {
 			var tr = document.createElement('tr');
 			tr.setAttribute('id','row_'+i);
 
 			for(j = 0; j < t_colls; j++) {
 				var td = document.createElement('td');
-				td.setAttribute('row',i);
-				td.setAttribute('coll',j);
+				td.row = i;
+				td.coll = j;
 
 				if(life[i]) {
 					if(life[i][j] == 1) {
@@ -59,14 +102,9 @@
 		};
 		
 		$('td').click(function() {
-			console.log($(this).attr('class'));
-			if($(this).attr('class') == 'alive') {
-				$(this).removeClass('alive');
-				$(this).addClass('dead');
-			}else{
-				$(this).removeClass('dead');
-				$(this).addClass('alive');
-			}
+			life[this.row][this.coll] = !life[this.row][this.coll];
+				$(this).toggleClass('alive');
+				$(this).toggleClass('dead');
 		});
 		
 	};
@@ -76,12 +114,17 @@
 		return Math.floor(Math.random() > val);
 	};
 
+	function init_life(t_rows, t_colls){
+		for(i = 0; i < t_rows; i++) {
+			life[i] = new Array();
+			neighbours[i] =new Array();
+		}
+	};
+
 
 	function get_random_gen(random_generation) {
-
 			if(random_generation) {
 			for(i = 0; i < t_rows; i++) {
-				life[i] = new Array();
 				for(j = 0; j < t_colls; j++) {
 					life[i][j] = getRandomInt(0.5);
 				}
@@ -89,3 +132,5 @@
 		}
 		return life;
 	};
+
+
