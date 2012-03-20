@@ -1,7 +1,33 @@
 	$(document).ready(function() {
-		new_gen();
+	$(function() {
+		$( "#slider_columns" ).slider({
+			value:10,
+			min: 1,
+			max: 100,
+			step: 1,
+			slide: function( event, ui ) {
+				$( "#amount_columns" ).val( ui.value );
+			}
+		});
+		$( "#amount_columns" ).val($( "#slider_columns" ).slider( "value" ));
+
 	});
 
+	$(function() {
+		$( "#slider_rows" ).slider({
+			value:10,
+			min: 1,
+			max: 100,
+			step: 1,
+			slide: function( event, ui ) {
+				$( "#amount_rows" ).val(ui.value );
+			}
+		});
+		$( "#amount_rows" ).val($( "#slider_rows" ).slider( "value" ) );
+	});
+
+		new_gen();
+	});
 
 	var t_colls = 10;
 	var t_rows = 10;
@@ -39,8 +65,16 @@
 		}
 		if(flag != 0) {
 		init_life(t_rows, t_colls);
+		if(document.options.randomize.checked == true) {
+			random_generation = true;
+		} else {
+		 random_generation = false;
+		 }
+		
 		get_random_gen(random_generation);
 		}
+		t_colls = $( "#amount_columns" ).val();
+		t_rows = $( "#amount_rows" ).val();
 		gen_table(t_rows, t_colls);
 	};
 

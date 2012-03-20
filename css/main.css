@@ -1,5 +1,6 @@
 #life_field{
 	border: 1px solid black;
+	float:left;
 }
 
 #life_field td{
@@ -27,4 +28,9 @@ float: left;
 	margin-left: 20px;
 	width: 100px;
 	height: 100px;
+}
+
+
+#slider_columns, #slider_rows{
+	width: 200px;
 }
