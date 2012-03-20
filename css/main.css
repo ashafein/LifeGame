@@ -1,11 +1,14 @@
-.life_field{
+#life_field{
 	border: 1px solid black;
 }
 
-.life_field td{
+#life_field td{
 	border: 1px solid black;
+	_border-left: 1px solid black;
 	width: 20px;
 	height: 20px;
+	margin: 0px;
+	padding: 0;
 }
 
 .alive{
@@ -14,4 +17,13 @@
 
 .dead{
 	background: none;
+}
+#table_wrap{
+float: left;
+}
+.button{
+	float: left;
+	margin-left: 20px;
+	width: 100px;
+	height: 100px;
 }
