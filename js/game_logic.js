@@ -6,20 +6,27 @@
 	var t_colls = 10;
 	var t_rows = 10;
 	var random_generation = true;
-	var life = new Array();
-	var neighbours = new Array();
 	var circle_lives = 3000;
-	var alive = 1;
+	var alive = true;
 	var timer;
 	var run = 0;
 
+	var life = new Array();
+	var neighbours = new Array();
+
+
 	function start_cycle(run) {
-		if(alive == 0) run = 0;
+		if(alive == 0){
+			 run = 0;
+		}
 		console.log(alive);
 		if(run != 0) {
 		if(timer) clearTimeout(timer);
 			timer = setTimeout(function(){one_circle(); start_cycle(run);}, 900);
-		}
+		} else {
+			run = 1;
+			alive = true;
+		 }
 	};
 
 	function stop_cycle(){
@@ -40,12 +47,12 @@
 
 
 	function count_neighbours() {
-		alive = 0;
+		alive = false;
 		for(i = 0; i < t_rows; i++) {
 			for(j = 0; j < t_colls; j++) {
 				count= 0;
 				if(life[i][j] == 1) {
-					alive++;
+					alive = true;
 					if((life[i+1] != undefined) && (life[i+1][j-1] != undefined)) {
 						count += life[i+1][j-1];
 					};
@@ -119,7 +126,6 @@
 				$(this).toggleClass('alive');
 				$(this).toggleClass('dead');
 		});
-		
 	};
 
 
