@@ -5,7 +5,7 @@
 
 	var t_colls = 10;
 	var t_rows = 10;
-	var random_generation = true;
+	var random_generation = false;
 	var circle_lives = 3000;
 	var alive = true;
 	var timer;
@@ -19,7 +19,6 @@
 		if(alive == 0){
 			 run = 0;
 		}
-		console.log(alive);
 		if(run != 0) {
 		if(timer) clearTimeout(timer);
 			timer = setTimeout(function(){one_circle(); start_cycle(run);}, 900);
@@ -53,44 +52,45 @@
 				count= 0;
 				if(life[i][j] == 1) {
 					alive = true;
-					if((life[i+1] != undefined) && (life[i+1][j-1] != undefined)) {
-						count += life[i+1][j-1];
-					};
-					if(life[i+1] != undefined) {
-						count += life[i+1][j];
-					};
-					if((life[i+1] != undefined) && (life[i+1][j+1] != undefined)) {
-						count += life[i+1][j+1];
-					};
-					if(life[i][j-1] != undefined) {
-						count += life[i][j-1];
-					};
-					if(life[i][j+1] != undefined) {
-						count += life[i][j+1];
-					};
-					if((life[i-1] != undefined) && (life[i-1][j-1] != undefined)) {
-						count += life[i-1][j-1];
-					};
-					if(life[i-1] != undefined) {
-						count += life[i-1][j];
-					};
-					if((life[i-1] != undefined) && (life[i-1][j+1] != undefined)) {
-						count += life[i-1][j+1];
-					}
-				} else { 
-					 count = 10;
-					 }
+				}
+				if((life[i+1] != undefined) && (life[i+1][j-1] != undefined)) {
+					count += life[i+1][j-1];
+				};
+				if(life[i+1] != undefined) {
+					count += life[i+1][j];
+				};
+				if((life[i+1] != undefined) && (life[i+1][j+1] != undefined)) {
+					count += life[i+1][j+1];
+				};
+				if(life[i][j-1] != undefined) {
+					count += life[i][j-1];
+				};
+				if(life[i][j+1] != undefined) {
+					count += life[i][j+1];
+				};
+				if((life[i-1] != undefined) && (life[i-1][j-1] != undefined)) {
+					count += life[i-1][j-1];
+				};
+				if(life[i-1] != undefined) {
+					count += life[i-1][j];
+				};
+				if((life[i-1] != undefined) && (life[i-1][j+1] != undefined)) {
+					count += life[i-1][j+1];
+				};
 				neighbours[i][j] = count;
 			}
 		}
 	}
 
 	function one_circle() {
-		count_neighbours()
+		count_neighbours();
 		for(i = 0; i < t_rows; i++) {
 			for(j = 0; j < t_colls; j++) {
-				if((neighbours[i][j] > 3) || (neighbours[i][j] < 2)) {
+				if((life[i][j] == 1) && ((neighbours[i][j] > 3) || (neighbours[i][j] < 2))) {
 					life[i][j] = 0;
+				}
+				if((life[i][j] == 0) && (neighbours[i][j] == 3)) {
+					life[i][j] = 1;
 				}
 			}
 		}
@@ -114,7 +114,7 @@
 				if(life[i]) {
 					if(life[i][j] == 1) {
 						td.setAttribute('class','alive');
-					}else{ td.setAttribute('class','dead'); };
+					} else { td.setAttribute('class','dead'); };
 				}
 				tr.appendChild(td);
 				table.appendChild(tr);
@@ -137,6 +137,10 @@
 		for(i = 0; i < t_rows; i++) {
 			life[i] = new Array();
 			neighbours[i] =new Array();
+			for(j = 0; j < t_colls; j++){
+				life[i][j] = 0;
+				neighbours[i][j] = 0;
+			}
 		}
 	};
 
