@@ -8,19 +8,30 @@
 	var random_generation = true;
 	var life = new Array();
 	var neighbours = new Array();
+	var circle_lives = 3000;
+	var alive = 1;
+	var timer;
+	var run = 0;
 
-
-	function start_cycle() {
-		//to do: timer
-		one_circle();
+	function start_cycle(run) {
+		if(alive == 0) run = 0;
+		console.log(alive);
+		if(run != 0) {
+		if(timer) clearTimeout(timer);
+			timer = setTimeout(function(){one_circle(); start_cycle(run);}, 900);
+		}
 	};
+
+	function stop_cycle(){
+		clearTimeout(timer);
+	}
 
 
 	function new_gen(flag) {
-		if(table = document.getElementById('life_field')){
+		if(table = document.getElementById('life_field')) {
 			table.parentNode.removeChild(table);
 		}
-		if(flag != 0){
+		if(flag != 0) {
 		init_life(t_rows, t_colls);
 		get_random_gen(random_generation);
 		}
@@ -29,10 +40,12 @@
 
 
 	function count_neighbours() {
+		alive = 0;
 		for(i = 0; i < t_rows; i++) {
 			for(j = 0; j < t_colls; j++) {
 				count= 0;
 				if(life[i][j] == 1) {
+					alive++;
 					if((life[i+1] != undefined) && (life[i+1][j-1] != undefined)) {
 						count += life[i+1][j-1];
 					};
