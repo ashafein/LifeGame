@@ -1,12 +1,14 @@
 	$(document).ready(function() {
 	$(function() {
 		$( "#slider_columns" ).slider({
+			orientation: "vertical",
 			value:10,
-			min: 1,
-			max: 100,
+			min: 3,
+			max: 20,
 			step: 1,
 			slide: function( event, ui ) {
 				$( "#amount_columns" ).val( ui.value );
+						init_life(t_rows, t_colls);
 			}
 		});
 		$( "#amount_columns" ).val($( "#slider_columns" ).slider( "value" ));
@@ -15,12 +17,14 @@
 
 	$(function() {
 		$( "#slider_rows" ).slider({
+			orientation: "vertical",
 			value:10,
-			min: 1,
-			max: 100,
+			min: 3,
+			max: 20,
 			step: 1,
 			slide: function( event, ui ) {
 				$( "#amount_rows" ).val(ui.value );
+						init_life(t_rows, t_colls);
 			}
 		});
 		$( "#amount_rows" ).val($( "#slider_rows" ).slider( "value" ) );
@@ -29,6 +33,7 @@
 
 	$(function() {
 		$( "#slider_timing" ).slider({
+			orientation: "vertical",
 			value:800,
 			min: 300,
 			max: 5000,
@@ -41,7 +46,6 @@
 
 	});
 
-		new_gen();
 	});
 
 	var t_colls = 10;
@@ -57,7 +61,8 @@
 
 
 	function start_cycle(run) {
-		circle_lives = $( "#slider_timing" ).val();
+		circle_lives = $( "#amount_timing" ).val();
+		console.log(circle_lives);
 		if(alive == 0){
 			 run = 0;
 		}
@@ -76,9 +81,13 @@
 
 
 	function new_gen(flag) {
+		stop_cycle();
+		t_colls = $( "#amount_columns" ).val();
+		t_rows = $( "#amount_rows" ).val();
 		if(table = document.getElementById('life_field')) {
 			table.parentNode.removeChild(table);
 		}
+
 		if(flag != 0) {
 		init_life(t_rows, t_colls);
 		if(document.options.randomize.checked == true) {
@@ -89,8 +98,6 @@
 		
 		get_random_gen(random_generation);
 		}
-		t_colls = $( "#amount_columns" ).val();
-		t_rows = $( "#amount_rows" ).val();
 		gen_table(t_rows, t_colls);
 	};
 
