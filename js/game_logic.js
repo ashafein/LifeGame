@@ -8,7 +8,6 @@
 			step: 1,
 			slide: function( event, ui ) {
 				$( "#amount_columns" ).val( ui.value );
-						init_life(t_rows, t_colls);
 			}
 		});
 		$( "#amount_columns" ).val($( "#slider_columns" ).slider( "value" ));
@@ -24,7 +23,6 @@
 			step: 1,
 			slide: function( event, ui ) {
 				$( "#amount_rows" ).val(ui.value );
-						init_life(t_rows, t_colls);
 			}
 		});
 		$( "#amount_rows" ).val($( "#slider_rows" ).slider( "value" ) );
@@ -43,7 +41,10 @@
 			}
 		});
 		$( "#amount_timing" ).val($( "#slider_timing" ).slider( "value" ));
+	});
 
+	$(function() {
+		$( "#randomizer" ).button();
 	});
 
 	});

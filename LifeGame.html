@@ -5,8 +5,8 @@
 <head>
 <title>LifeGame</title>
 
-	<link rel="stylesheet" href="css/main.css" />
 	<link rel="stylesheet" href="css/ui-lightness/jquery-ui-1.8.18.custom.css" />
+	<link rel="stylesheet" href="css/main.css" />
 
 	<script src="js/jquery-1.7.1.min.js"></script>
 	<script src="js/jquery-ui-1.8.18.custom.min.js"></script>
@@ -46,11 +46,18 @@
 			<input class='button' type="button" value="New" onclick="new_gen(1)">
 			<input class='button' type="button" value="Stop" onclick="stop_cycle()">
 			<input class='button  last' type="button" value="One step" onclick="one_circle()">
-			<input class='button' type="checkbox" name="randomize" value="true"> Random generation<br>
+			<div class="randomise_checkbox">
+				<input id='randomizer' type="checkbox" name="randomize" value="true">
+				<label for="randomizer">Random generation</label>
+			</div>
 		</form>
 	</div>
 
 	<div id="table_wrap">
+		<div id="first_time">
+			<p>Click "New" button to generate a field</p>
+			<p>Click "Random generation" to fill field with random set of birds</p>
+		</div>
 	</div>
 
 

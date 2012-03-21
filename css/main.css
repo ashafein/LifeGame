@@ -42,6 +42,7 @@ body{
 	float: left;
 	width: 50%;
 }
+
 .button{
 	float: left;
 	margin-left: 20px;
@@ -54,7 +55,6 @@ background-image: -o-linear-gradient(bottom, rgb(20,91,16) 28%, rgb(46,119,42) 6
 background-image: -moz-linear-gradient(bottom, rgb(20,91,16) 28%, rgb(46,119,42) 64%, rgb(74,155,72) 82%);
 background-image: -webkit-linear-gradient(bottom, rgb(20,91,16) 28%, rgb(46,119,42) 64%, rgb(74,155,72) 82%);
 background-image: -ms-linear-gradient(bottom, rgb(20,91,16) 28%, rgb(46,119,42) 64%, rgb(74,155,72) 82%);
-
 background-image: -webkit-gradient(
 	linear,
 	left bottom,
@@ -63,6 +63,9 @@ background-image: -webkit-gradient(
 	color-stop(0.64, rgb(46,119,42)),
 	color-stop(0.82, rgb(74,155,72))
 );
+	
+	font-size: 14px;
+	font-weight: bold;
 	-moz-box-shadow:    0px 2px 2px 2px #67a81e;
 	-webkit-box-shadow: 0px 2px 2px 2px #67a81e;
 	box-shadow:         0px 2px 2px 2px #67a81e;
@@ -70,7 +73,6 @@ background-image: -webkit-gradient(
 }
 
 .button:hover{
-
 background-image: linear-gradient(bottom, rgb(133,174,42) 45%, rgb(160,209,72) 73%, rgb(192,251,101) 87%);
 background-image: -o-linear-gradient(bottom, rgb(133,174,42) 45%, rgb(160,209,72) 73%, rgb(192,251,101) 87%);
 background-image: -moz-linear-gradient(bottom, rgb(133,174,42) 45%, rgb(160,209,72) 73%, rgb(192,251,101) 87%);
@@ -85,6 +87,9 @@ background-image: -webkit-gradient(
 	color-stop(0.73, rgb(160,209,72)),
 	color-stop(0.87, rgb(192,251,101))
 );
+	
+	font-size: 15px;
+	font-weight: bold;
 	-moz-box-shadow:    0px 2px 2px 2px #f8f39c;
 	-webkit-box-shadow: 0px 2px 2px 2px #f8f39c;
 	box-shadow:         0px 2px 2px 2px #f8f39c;
@@ -102,6 +107,7 @@ background-image: -webkit-gradient(
 	width: 30%;
 	float: left;
 }
+
 .rows input, .columns input, .timing input{
 	border: none;
 	background: none;
@@ -113,7 +119,6 @@ background-image: -webkit-gradient(
 
 .rows input:active, .columns input:active, .timing input:active{
 	border: none;
-
 }
 
 .options{
@@ -121,13 +126,16 @@ background-image: -webkit-gradient(
 	float: left;
 	margin-left: 10px;
 }
+
 .form_wrap{
 	width: 11%;
 	float: right;
 }
+
 #slider_columns, #slider_rows, #slider_timing{
 	height: 250px;
 }
+
 .rows p, .columns p, .timing p{
 	display: block;
 	height: 50px;
@@ -141,4 +149,92 @@ background-image: -webkit-gradient(
 
 .last{
 	border-radius: 0px 0px 6px 6px;
+}
+
+.randomise_checkbox{
+	width: 100px;
+	height: 80px;
+	color: #fff;
+	margin-top: 10px;
+	margin-left: 20px;
+	float: left;
+	background-image: linear-gradient(bottom, rgb(62,194,16) 9%, rgb(93,233,42) 55%);
+	background-image: -o-linear-gradient(bottom, rgb(62,194,16) 9%, rgb(93,233,42) 55%);
+	background-image: -moz-linear-gradient(bottom, rgb(62,194,16) 9%, rgb(93,233,42) 55%);
+	background-image: -webkit-linear-gradient(bottom, rgb(62,194,16) 9%, rgb(93,233,42) 55%);
+	background-image: -ms-linear-gradient(bottom, rgb(62,194,16) 9%, rgb(93,233,42) 55%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.09, rgb(62,194,16)),
+		color-stop(0.55, rgb(93,233,42))
+	);
+	border-radius: 20px;
+	font-size: 14px;
+	-moz-box-shadow:    0px 0px 2px 2px #579e12;
+	-webkit-box-shadow: 0px 0px 2px 2px #579e12;
+	box-shadow:         0px 0px 2px 2px #579e12;
+}
+
+.randomise_checkbox:hover{
+	background-image: linear-gradient(bottom, rgb(132,194,17) 9%, rgb(182,232,44) 55%);
+	background-image: -o-linear-gradient(bottom, rgb(132,194,17) 9%, rgb(182,232,44) 55%);
+	background-image: -moz-linear-gradient(bottom, rgb(132,194,17) 9%, rgb(182,232,44) 55%);
+	background-image: -webkit-linear-gradient(bottom, rgb(132,194,17) 9%, rgb(182,232,44) 55%);
+	background-image: -ms-linear-gradient(bottom, rgb(132,194,17) 9%, rgb(182,232,44) 55%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.09, rgb(132,194,17)),
+		color-stop(0.55, rgb(182,232,44))
+	);
+}
+.randomise_checkbox .ui-state-active{
+	font-size: 16px;
+	font-weight: bold;
+	width: 100px;
+	height: 80px;
+	border-radius: 20px;
+	-moz-box-shadow:    0px 0px 5px 3px #ff9a07;
+	-webkit-box-shadow: 0px 0px 5px 3px #ff9a07;
+	box-shadow:         0px 0px 5px 3px #ff9a07;
+}
+
+.ui-button-text{
+	margin-left: 0px;
+	width: 100px;
+	margin-top: 15px;
+}
+
+.ui-button{
+	background-color: none;
+}
+
+.ui-state-default,
+.ui-widget-content
+.ui-widget-header
+.ui-state-default{
+	background:none;
+	border: none;
+	color: #fff !important;
+}
+
+.randomise_checkbox .ui-state-active .ui-button-text{
+	color: #fffbe6 !important;
+}
+
+.ui-button-text-only
+.ui-button-text{
+	padding: 0;
+	color: #fff !important;
+}
+
+#table_wrap p{
+	color: #fff;
+	font-size: 20px;
+	
 }
