@@ -8,6 +8,7 @@
 			step: 1,
 			slide: function( event, ui ) {
 				$( "#amount_columns" ).val( ui.value );
+				new_gen();
 			}
 		});
 		$( "#amount_columns" ).val($( "#slider_columns" ).slider( "value" ));
@@ -23,6 +24,7 @@
 			step: 1,
 			slide: function( event, ui ) {
 				$( "#amount_rows" ).val(ui.value );
+				new_gen();
 			}
 		});
 		$( "#amount_rows" ).val($( "#slider_rows" ).slider( "value" ) );
@@ -62,6 +64,7 @@
 
 
 	function start_cycle(run) {
+		$('#slider_rows, #slider_columns, #slider_timing').css('display','none');
 		circle_lives = $( "#amount_timing" ).val();
 		console.log(circle_lives);
 		if(alive == 0){
@@ -78,6 +81,7 @@
 
 	function stop_cycle(){
 		clearTimeout(timer);
+		$('#slider_rows, #slider_columns, #slider_timing').css('display','block');
 	}
 
 
@@ -156,6 +160,7 @@
 	}
 
 	function gen_table(t_rows, t_colls){
+		$("#table_wrap p").css("display",'none');
 		wrapper = document.getElementById('table_wrap');
 		table = document.createElement('table');
 		table.setAttribute('id','life_field');
